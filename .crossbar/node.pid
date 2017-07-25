@@ -1,0 +1,19 @@
+{
+    "pid": 9304, 
+    "options": {
+        "reactor": null, 
+        "loglevel": "info", 
+        "logtofile": false, 
+        "cbdir": "C:\\Users\\u0078867\\Desktop\\KULeuvenJob\\workflows_PMA\\apps\\bpmn-engine-wamp\\.crossbar", 
+        "logformat": "standard", 
+        "command": "start", 
+        "logdir": null, 
+        "config": "config.json", 
+        "colour": false, 
+        "personality": "community"
+    }, 
+    "argv": [
+        "C:\\Users\\u0078867\\Anaconda\\Scripts\\crossbar", 
+        "start"
+    ]
+}
