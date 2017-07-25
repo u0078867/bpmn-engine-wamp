@@ -8,10 +8,10 @@ const autobahn = require('autobahn');
 const argv = require('minimist')(process.argv.slice(2));
 
 // Get parameters
-const formsAPI = 'http://localhost:8000/api/forms';
-const wampUrl = 'ws://127.0.0.1:8002/ws';
-const wampRealm = 'realm1';
-const bpmnFilePath = './diagram_1.bpmn';
+const formsAPI = argv['forms-api'] || 'http://localhost:8000/api/forms';
+const wampUrl = argv['wamp-url'] || 'ws://127.0.0.1:8002/ws';
+const wampRealm = argv['wamp-realm'] || 'realm1';
+const bpmnFilePath = argv._[0];
 
 // Create WAMP connection
 var connection = new autobahn.Connection({
@@ -49,7 +49,9 @@ connection.onopen = function (session) {
     let form = forms.filter(f => f.title === formTitle)[0];
     // Create URL to redirect browser
     let pckg = {
-      data: `${form.slug}-${form.cuid}`,
+      data: {
+        url: `${form.slug}-${form.cuid}`,
+      }
     };
     // Redirect browser
     session.publish('wf-task-enter', [pckg]);
